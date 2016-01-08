@@ -35,7 +35,10 @@ public class IterAndListIterT {
 	
 	/**
 	 * 并发修改异常产生。
-	 * 原因：Iterator(Object obj = it.next()) 会检查HashMap的size，
+	 * 原因：Iterator(Object obj = it.next())里会用checkForComodification检查HashMap的size
+	 * if (modCount != expectedModCount) {
+         * throw new ConcurrentModificationException();
+         * }
 	 * size发生变化，抛出错误ConcurrentModificationException。
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
